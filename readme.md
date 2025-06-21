@@ -29,39 +29,43 @@ We designed our tests with the following principles in mind:
 - 📚 **Documentation-first**: Each test case includes clear commentary explaining the expected behavior and any assumptions.
 
 ---
-## 🧪 Key Tests and Their Rationale
+## 🧪 Functional, Unit, and Integration Tests
 
-### 1. 📈 Return Calculation Accuracy Test
-- **What it tests:** ✅ Validates the correctness of the return calculation function against known datasets.
-- **Why this test:** 🎯 Returns are the foundation of any financial analysis. Ensuring precise return calculations is critical because small errors can propagate and distort volatility estimates and portfolio risk assessments.
-- **How it works:** 🔍 Uses pre-calculated expected return values and compares them with the function output using an epsilon-based tolerance to account for floating-point precision.
+To ensure precision and stability in this project, we implemented three fundamental types of tests, each serving a specific purpose:
 
 ---
 
-### 2. ⚡ Volatility Estimation Robustness Test
-- **What it tests:** 🛡️ Evaluates the volatility calculation over diverse datasets, including volatile, flat, and extreme market conditions.
-- **Why this test:** ⚠️ Volatility is sensitive to outliers and extreme values. This test ensures that the algorithm handles such edge cases gracefully without numerical instability or crashes.
-- **How it works:** 🧪 Runs the volatility function on synthetic and historical data samples, verifying results fall within expected bounds and do not produce NaNs or infinities.
+### 1. 🧩 Unit Test  
+- **What it tests:** Individual core functions such as return calculation or variance computation.  
+- **Why:** Ensures each basic mathematical component works correctly in isolation, catching simple errors early before integration.  
+- **How it was designed:** Uses small, controlled datasets with hand-calculated or trusted reference values, comparing results with epsilon-based tolerance for floating-point accuracy.  
+- **Example:** Testing the function that calculates return between two points with simple values to verify correct formula implementation.
 
 ---
 
-### 3. 🌐 Cross-Platform Consistency Test
-- **What it tests:** 🔄 Confirms that results are consistent across different platforms and compiler settings.
-- **Why this test:** 🖥️ Floating-point arithmetic can differ subtly between architectures or compiler optimizations. This test is essential to guarantee reproducibility and reliability of financial models regardless of the execution environment.
-- **How it works:** ⚖️ Compares outputs from different machines or build configurations, flagging discrepancies beyond an acceptable error margin.
+### 2. 🔍 Functional Test  
+- **What it tests:** The complete behavior of a module, like volatility calculation from a series of returns.  
+- **Why:** Verifies that components interact correctly and data flows as expected in representative scenarios.  
+- **How it was designed:** Uses datasets with known characteristics (stable markets, volatile periods, outliers) to confirm outputs align with financial and statistical expectations.  
+- **Example:** Running the full volatility function on real or simulated data and comparing the results against expected values within a small error margin.
 
 ---
 
-### 📋 Summary
+### 3. 🔗 Integration Test  
+- **What it tests:** Interaction between modules or functions that together form the complete system, including data input, calculations, and report generation.  
+- **Why:** Ensures the entire system works seamlessly without errors, and that communication between parts is flawless.  
+- **How it was designed:** Tests simulate real-world use cases from data ingestion to final output, validating consistency and absence of failures.  
+- **Example:** Processing a full historical dataset to calculate returns and volatility, then verifying results against benchmarks or external calculations.
 
-By focusing on these three core tests, the project ensures:
+---
 
-- ✔️ **Mathematical correctness** in key financial metrics,
-- 🛠️ **Robustness** against diverse and challenging datasets,
-- 🔁 **Reproducibility** and reliability in various environments.
+### 📌 Summary of Decisions
 
-These choices reflect the critical nature of numerical precision and stability in financial computing.
+- **Unit tests** are strict, using small datasets to detect errors at the most fundamental level.  
+- **Functional tests** handle more complex data to ensure modules perform correctly under various financial scenarios.  
+- **Integration tests** validate the solution as a whole, simulating real usage flows to guarantee robustness and reliability.
 
+This combined strategy is crucial due to the **delicate nature of numerical computations in finance**, where even minor inaccuracies or errors can impact critical decisions.
 
 ## 💡 Key Design Decisions
 
