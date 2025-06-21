@@ -50,18 +50,19 @@ We designed our tests with the following principles in mind:
 ├── README.md               # Project documentation
 └── Makefile                # Build instructions
 
+```
+
 ---
 
 
 ## 🚀 Getting Started
-bash
-Copiar
-Editar
+
+```
 git clone https://github.com/jorgelefenda/C-Language-Finance-Testing-Volatility-Return
 cd C-Language-Finance-Testing-Volatility-Return
 make
 ./run_tests
-
+```
 ---
 
 ## 🙌 Contributing
