@@ -29,6 +29,39 @@ We designed our tests with the following principles in mind:
 - 📚 **Documentation-first**: Each test case includes clear commentary explaining the expected behavior and any assumptions.
 
 ---
+## 🧪 Key Tests and Their Rationale
+
+### 1. 📈 Return Calculation Accuracy Test
+- **What it tests:** ✅ Validates the correctness of the return calculation function against known datasets.
+- **Why this test:** 🎯 Returns are the foundation of any financial analysis. Ensuring precise return calculations is critical because small errors can propagate and distort volatility estimates and portfolio risk assessments.
+- **How it works:** 🔍 Uses pre-calculated expected return values and compares them with the function output using an epsilon-based tolerance to account for floating-point precision.
+
+---
+
+### 2. ⚡ Volatility Estimation Robustness Test
+- **What it tests:** 🛡️ Evaluates the volatility calculation over diverse datasets, including volatile, flat, and extreme market conditions.
+- **Why this test:** ⚠️ Volatility is sensitive to outliers and extreme values. This test ensures that the algorithm handles such edge cases gracefully without numerical instability or crashes.
+- **How it works:** 🧪 Runs the volatility function on synthetic and historical data samples, verifying results fall within expected bounds and do not produce NaNs or infinities.
+
+---
+
+### 3. 🌐 Cross-Platform Consistency Test
+- **What it tests:** 🔄 Confirms that results are consistent across different platforms and compiler settings.
+- **Why this test:** 🖥️ Floating-point arithmetic can differ subtly between architectures or compiler optimizations. This test is essential to guarantee reproducibility and reliability of financial models regardless of the execution environment.
+- **How it works:** ⚖️ Compares outputs from different machines or build configurations, flagging discrepancies beyond an acceptable error margin.
+
+---
+
+### 📋 Summary
+
+By focusing on these three core tests, the project ensures:
+
+- ✔️ **Mathematical correctness** in key financial metrics,
+- 🛠️ **Robustness** against diverse and challenging datasets,
+- 🔁 **Reproducibility** and reliability in various environments.
+
+These choices reflect the critical nature of numerical precision and stability in financial computing.
+
 
 ## 💡 Key Design Decisions
 
